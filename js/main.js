@@ -1,4 +1,3 @@
 document.addEventListener('DOMContentLoaded', () => {
-    Header.render('#site-header');
-
+    BottomNav.render('#site-nav');
 });
