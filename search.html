@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buscar Personajes</title>
-  <!--<link rel="stylesheet" href="styles.css" /> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 
-  <!-- Contenedor del Navbar -->
-  <header id="navbar-container"></header>
+  <!-- Navegación -->
+  <!-- <header id="navbar-container"></header>-->
 
-  <!-- Contenido Principal -->
-  <main>
-    <h1>Buscador de Personajes</h1>
+  <!-- Contenido Principal del Home -->
+  <!--<main class="home-container">
+    <section class="hero">
+      <h1>¡Bienvenido</h1>
+    </section>
+  </main> -->
+
+  <main> 
+       <h1>Buscador de Personajes</h1>
 
     <!-- 1. Formulario de Búsqueda y Filtros -->
     <form id="search-form">
@@ -53,16 +59,25 @@
       <span id="page-info">Página 1</span>
       <button id="btn-next" disabled>Siguiente</button>
     </div>
+
   </main>
 
-  <!-- Contenedor del Footer -->
-  <div id="footer-container"></div>
+  <!-- Footer  -->
+  <!-- <div id="footer-container"></div> -->
+  <div id="site-nav"></div>
 
-  <!-- Scripts -->
-  <script src="../api/api.js"></script>
-  <script src="../components/nav.js"></script>
-  <script src="../components/footer.js"></script>
-  <!-- Agregamos el script que maneja la lógica de la búsqueda -->
-  <script src="../main.js"></script>
+  <!-- Componentes: siempre antes de main.js --> 
+  <script src="./js/components/bottom-nav.js"></script>
+    
+  <!-- Utilidades -->
+  <script src="./js/api/api.js"></script>
+  <script src="./js/utils/router.js"></script>
+
+  <!-- Controlador: siempre antes del script de la vista --> 
+  <script src="./js/main.js"></script>
+
+  <!-- Lógica específica de esta vista -->
+   <script src="./js/pages/search.js"></script>
+
 </body>
 </html>

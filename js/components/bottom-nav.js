@@ -1,12 +1,15 @@
-/*const BottomNav  = {
+const BottomNav  = {
   render: (selector) => {
     const element = document.querySelector(selector);
     if (!element) return;
 
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const isActive = (page) => currentPage === page ? "bottom-nav__item--active" : "";
+
     {
       element.innerHTML = `
         <nav class="bottom-nav">
-          <a href="#" class="bottom-nav__item">
+          <a href="./index.html" class="bottom-nav__item ${isActive("index.html")}">
               <span class="bottom-nav__icon">
                   <!-- Inicio -->
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -18,7 +21,7 @@
               <span class="bottom-nav__text">Inicio</span>
           </a>
 
-          <a href="#" class="bottom-nav__item">
+          <a href="./search.html" class="bottom-nav__item ${isActive("search.html")}">
               <span class="bottom-nav__icon">
                   <!-- Buscar -->
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -71,4 +74,4 @@
       `;
     }
   }
-};/*
+};
