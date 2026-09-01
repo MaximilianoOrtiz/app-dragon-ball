@@ -57,13 +57,13 @@ async function executeSearch() {
     statusDiv.innerText = "";
 
     if (!response.items || response.items.length === 0) {
-      statusDiv.innerText = "No se encontraron personajes.";
+      Card.renderList([], "#results-container");
       updatePaginationControls(false, false);
       return;
     }
 
-    // Dibujar personajes en el HTML
-    renderCharacters(response.items);
+    // Dibujar personajes en el HTML usando el componente Card
+    Card.renderList(response.items, "#results-container");
 
     // Actualizar estado de los botones Anterior / Siguiente
     updatePaginationControls(currentPage > 1, response.hasNext);
@@ -74,7 +74,7 @@ async function executeSearch() {
   }
 }
 
-function renderCharacters(characters) {
+/*function renderCharacters(characters) {
   const resultsDiv = document.getElementById("results-container");
 
   // Genera un bloque HTML básico para cada personaje
@@ -88,7 +88,7 @@ function renderCharacters(characters) {
   `).join("");
 
   resultsDiv.innerHTML = html;
-}
+} */
 
 function updatePaginationControls(hasPrev, hasNext) {
   const btnPrev = document.getElementById("btn-prev");

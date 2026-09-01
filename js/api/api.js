@@ -13,6 +13,14 @@ const DragonBallAPI = (function () {
       price: c.ki || "1000",
       description: c.description || "Sin descripción disponible.",
       image: c.image,
+      transformations: Array.isArray(c.transformations)
+      ? c.transformations.map((t) => ({
+          id: t.id,
+          name: t.name,
+          image: t.image,
+          price: t.ki || "1000",
+        }))
+      : [],
     };
   }
 
@@ -37,33 +45,56 @@ const DragonBallAPI = (function () {
   }
 
   async function fetchChars(opts = {}) {
-    const query = buildQuery({
-      name: opts.name,
-      race: opts.race,
-      gender: opts.gender,
-      affiliation: opts.affiliation,
-      page: opts.page || 1,
-      limit: PAGE_SIZE,
-    });
+  const page = opts.page || 1;
+  const limit = PAGE_SIZE;
 
-    try {
-      const response = await fetch(`${BASE_URL}/characters${query}`);
-      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+  const query = buildQuery({
+    name: opts.name,
+    race: opts.race,
+    gender: opts.gender,
+    affiliation: opts.affiliation,
+    page: page,
+    limit: limit,
+  });
 
-      const data = await response.json();
-      const { items, meta } = normalizeList(data);
+  try {
+    const response = await fetch(`${BASE_URL}/characters${query}`);
+    if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+    const data = await response.json();
+
+    if (Array.isArray(data)) {
+      const totalItems = data.length;
+      const totalPages = Math.ceil(totalItems / limit) || 1;
+
+      // Paginar manualmente el arreglo
+      const startIndex = (page - 1) * limit;
+      const paginatedItems = data.slice(startIndex, startIndex + limit);
 
       return {
-        items: items.map(mapChar),
-        page: (meta && meta.currentPage) || opts.page || 1,
-        totalPages: meta ? meta.totalPages : null,
-        totalItems: meta ? meta.totalItems : null,
-        hasNext: meta ? meta.currentPage < meta.totalPages : items.length === PAGE_SIZE,
+        items: paginatedItems.map(mapChar),
+        page: page,
+        totalPages: totalPages,
+        totalItems: totalItems,
+        hasNext: page < totalPages,
       };
-    } catch (error) {
-      throw new Error("Error al conectar la API: " + error.message);
     }
+
+    // SI LA API DEVUELVE UN OBJETO PAGINADO NORMAL ({ items, meta }):
+    const { items, meta } = normalizeList(data);
+
+    return {
+      items: items.map(mapChar),
+      page: (meta && meta.currentPage) || page,
+      totalPages: meta ? meta.totalPages : null,
+      totalItems: meta ? meta.totalItems : null,
+      hasNext: meta ? meta.currentPage < meta.totalPages : items.length === limit,
+    };
+
+  } catch (error) {
+    throw new Error("Error al conectar la API: " + error.message);
   }
+}
 
   async function fetchProductById(id) {
     try {
