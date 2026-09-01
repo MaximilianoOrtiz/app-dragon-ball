@@ -10,7 +10,7 @@ const Header = {
 
                     <img
                         class="site-header__logo"
-                        src="/assets/images/dragon-ball.png"
+                        src="./assets/images/dragon-ball.png"
                         alt=""
                     >
 
