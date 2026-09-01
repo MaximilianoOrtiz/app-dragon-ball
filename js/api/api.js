@@ -3,6 +3,17 @@ const DragonBallAPI = (function () {
   const PAGE_SIZE = 10;
   let _filterOptionsCache = null;
 
+  function formatPrice(ki) {
+  if (ki === "0") {
+    return "200";
+  }
+
+  if (ki === "unknown") {
+    return "100.000";
+  }
+  return ki; // Si no es 0 ni Unknow, mantiene el Ki original
+}
+
   function mapChar(c) {
     return {
       id: c.id,
@@ -10,7 +21,7 @@ const DragonBallAPI = (function () {
       race: c.race || "Desconocida",
       gender: c.gender || "Desconocido",
       affiliation: c.affiliation || "Sin afiliación",
-      price: c.ki || "1000",
+      price: formatPrice(c.ki),
       description: c.description || "Sin descripción disponible.",
       image: c.image,
       transformations: Array.isArray(c.transformations)
@@ -18,7 +29,7 @@ const DragonBallAPI = (function () {
           id: t.id,
           name: t.name,
           image: t.image,
-          price: t.ki || "1000",
+          price: formatPrice(t.ki),
         }))
       : [],
     };
