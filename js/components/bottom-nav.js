@@ -1,4 +1,4 @@
-const BottomNav  = {
+/*const BottomNav  = {
   render: (selector) => {
     const element = document.querySelector(selector);
     if (!element) return;
@@ -71,4 +71,4 @@ const BottomNav  = {
       `;
     }
   }
-};
+};/*

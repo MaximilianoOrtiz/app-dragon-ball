@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buscar Personajes</title>
+  <!--<link rel="stylesheet" href="styles.css" /> -->
+</head>
+<body>
+
+  <!-- Contenedor del Navbar -->
+  <header id="navbar-container"></header>
+
+  <!-- Contenido Principal -->
+  <main>
+    <h1>Buscador de Personajes</h1>
+
+    <!-- 1. Formulario de Búsqueda y Filtros -->
+    <form id="search-form">
+      <input type="text" id="input-name" placeholder="Nombre (ej. Goku)" />
+
+      <select id="select-race">
+        <option value="">Todas las razas</option>
+        <option value="Saiyan">Saiyan</option>
+        <option value="Human">Humano</option>
+        <option value="Namekian">Namekiano</option>
+        <option value="Android">Androide</option>
+        <option value="Frieza Race">Raza de Freezer</option>
+      </select>
+
+      <select id="select-gender">
+        <option value="">Todos los géneros</option>
+        <option value="Male">Masculino</option>
+        <option value="Female">Femenino</option>
+      </select>
+
+      <button type="submit">Buscar</button>
+    </form>
+
+    <hr />
+
+    <!-- 2. Mensaje de estado (Cargando / Sin resultados) -->
+    <div id="status-message"></div>
+
+    <!-- 3. Contenedor donde se cargarán las tarjetas de personajes -->
+    <div id="results-container"></div>
+
+    <hr />
+
+    <!-- 4. Controles de Paginación -->
+    <div id="pagination-container">
+      <button id="btn-prev" disabled>Anterior</button>
+      <span id="page-info">Página 1</span>
+      <button id="btn-next" disabled>Siguiente</button>
+    </div>
+  </main>
+
+  <!-- Contenedor del Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="../api/api.js"></script>
+  <script src="../components/nav.js"></script>
+  <script src="../components/footer.js"></script>
+  <!-- Agregamos el script que maneja la lógica de la búsqueda -->
+  <script src="../main.js"></script>
+</body>
+</html>

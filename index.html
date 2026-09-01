@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Ball</title>
-    <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <!--<link rel="stylesheet" href="styles.css" /> -->
 </head>
 <body>
 
-    <!-- Puntos de montaje para componentes comunes --> 
+  <!-- Navegación -->
+  <header id="navbar-container"></header>
 
-    <!-- Contenido específico de esta vista -->
-    <main>
-     <!--En el caso del index iria la vista del Home.-->   
-    </main>
+  <!-- Contenido Principal del Home -->
+  <main class="home-container">
+    <section class="hero">
+      <h1>¡Bienvenido</h1>
+    </section>
+  </main>
 
-    <div id="site-nav"></div>
+  <!-- Footer  -->
+  <div id="footer-container"></div>
 
-    <!-- Componentes: siempre antes de main.js --> 
-    <script src="/js/components/bottom-nav.js"></script>
-    
-    <!-- Utilidades -->
-    <script src="/js/api/dragon-ball-api.js"></script>
-    <script src="/js/utils/router.js"></script>
-
-    <!-- Controlador: siempre antes del script de la vista --> 
-    <script src="/js/main.js"></script>
-
-    <!-- Lógica específica de esta vista -->
-    <!-- TODO: En el index iria la vista del Home -->
-
+  <!-- Scripts -->
+  <script src="/js/components/nav.js"></script>
+  <script src="/js/components/footer.js"></script>
 </body>
 </html>
