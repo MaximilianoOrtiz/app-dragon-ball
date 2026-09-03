@@ -4,7 +4,7 @@ const Card = {
     const tarjeta = document.createElement("a");
     tarjeta.classList.add("card");
     tarjeta.dataset.id = item.id;
-    tarjeta.href = `../../details.html?id=${item.id}`;
+    tarjeta.href = `details.html?id=${item.id}`;
  
     tarjeta.innerHTML = `
       <div class="card__media">
