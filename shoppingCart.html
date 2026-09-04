@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragon Ball</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/shopping-cart.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -20,9 +21,9 @@
     <div id="site-header"></div>
 
     <main>
+        <div id="site-shopping-cart">
 
-        <h2>carrito de compras</h2>
-
+        </div>
     </main>
 
     <!-- Navegacion mobile -->
@@ -36,10 +37,16 @@
     <script src="./js/components/bottom-nav.js"></script>
     <script src="./js/components/header.js"></script>
     <script src="./js/components/footer.js"></script>
+    <script src="./js/components/cart/quantity-selector.js"></script>
+    <script src="./js/components/cart/cart-item.js"></script>
+    <script src="./js/components/cart/cart-header.js"></script>
+    <script src="./js/components/cart/order-summary.js"></script>
+    <script src="./js/components/cart/cart.js"></script>
 
     <!-- Utilidades -->
     <script src="./js/api/api.js"></script>
     <script src="./js/utils/router.js"></script>
+    <script src="./js/utils/local-storage-util.js"></script>
 
     <!-- Controlador: siempre antes del script de la vista -->
     <script src="./js/main.js"></script>
