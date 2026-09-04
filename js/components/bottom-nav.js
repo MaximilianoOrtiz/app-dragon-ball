@@ -21,31 +21,32 @@ const BottomNav  = {
               <span class="bottom-nav__text">Inicio</span>
           </a>
 
-          <a href="./search.html" class="bottom-nav__item ${isActive("search.html")}">
-              <span class="bottom-nav__icon">
-                  <!-- Buscar -->
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <circle cx="10.5" cy="10.5" r="6.5"></circle>
-                      <path d="M16 16l5 5"></path>
-                  </svg>
-              </span>
-              <span class="bottom-nav__text">Buscar</span>
-          </a>
+          <a href="#" class="bottom-nav__item">
+                <span class="bottom-nav__icon">
+                    <!-- Catálogo -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                        <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                        <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                        <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+                    </svg>
+                </span>
+
+                 <span class="bottom-nav__text">Catálogo</span>
+            </a>
 
           <a href="#" class="bottom-nav__item">
-              <span class="bottom-nav__icon">
-                  <!-- Deseos -->
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M20.8 8.7c0 5.5-8.8 11-8.8 11S3.2 14.2 3.2 8.7
-                              C3.2 5.6 5.3 4 7.8 4
-                              c1.7 0 3.3.9 4.2 2.3
-                              C12.9 4.9 14.5 4 16.2 4
-                              c2.5 0 4.6 1.6 4.6 4.7z">
-                      </path>
-                  </svg>
-              </span>
-              <span class="bottom-nav__text">Deseos</span>
-          </a>
+            <span class="bottom-nav__icon">
+                <!-- Carrito -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"></path>
+                    <circle cx="10" cy="20" r="1.5"></circle>
+                    <circle cx="18" cy="20" r="1.5"></circle>
+                </svg>
+            </span>
+            <span class="bottom-nav__text">Carrito</span>
+            </a>
+          
 
           <a href="#" class="bottom-nav__item">
               <span class="bottom-nav__icon">
@@ -72,6 +73,6 @@ const BottomNav  = {
           </a>
         </nav>
       `;
+        }
     }
-  }
 };
