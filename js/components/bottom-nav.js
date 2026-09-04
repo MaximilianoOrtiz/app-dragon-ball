@@ -21,7 +21,7 @@ const BottomNav  = {
               <span class="bottom-nav__text">Inicio</span>
           </a>
 
-          <a href="#" class="bottom-nav__item">
+          <a href="./search.html" class="bottom-nav__item ${isActive("search.html")}">
                 <span class="bottom-nav__icon">
                     <!-- Catálogo -->
                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -35,7 +35,7 @@ const BottomNav  = {
                  <span class="bottom-nav__text">Catálogo</span>
             </a>
 
-          <a href="#" class="bottom-nav__item">
+          <a href="./shoppingCart.html" class="bottom-nav__item ${isActive("shoppingCart.html")}">
             <span class="bottom-nav__icon">
                 <!-- Carrito -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">

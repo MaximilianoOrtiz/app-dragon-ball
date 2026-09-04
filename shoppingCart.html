@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Puntos de montaje para componentes comunes -->
+    <div id="site-header"></div>
+
+    <main>
+
+        <h2>carrito de compras</h2>
+
+    </main>
+
+    <!-- Navegacion mobile -->
+    <div id="site-nav"></div>
+
+    <!-- Footer desktop -->
+    <div id="site-footer"></div>
+
+
+    <!-- Componentes: siempre antes de main.js -->
+    <script src="./js/components/bottom-nav.js"></script>
+    <script src="./js/components/header.js"></script>
+    <script src="./js/components/footer.js"></script>
+
+    <!-- Utilidades -->
+    <script src="./js/api/api.js"></script>
+    <script src="./js/utils/router.js"></script>
+
+    <!-- Controlador: siempre antes del script de la vista -->
+    <script src="./js/main.js"></script>
+
+    <!-- Lógica específica de esta vista -->
+    <script src="./js/pages/shoppingCart.js"></script>
+
+</body>
+
+</html>
