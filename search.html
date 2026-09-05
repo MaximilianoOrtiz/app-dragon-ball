@@ -25,6 +25,7 @@
     <form id="search-form">
       <input type="text" id="input-name" placeholder="Nombre (ej. Goku)" />
 
+      <div class="search-form__row"></div>
       <select id="select-race">
         <option value="">Todas las razas</option>
         <option value="Saiyan">Saiyan</option>
@@ -39,8 +40,9 @@
         <option value="Male">Masculino</option>
         <option value="Female">Femenino</option>
       </select>
+      </div>
 
-      <button type="submit">Buscar</button>
+      <button type="submit" class="search-form__submit">Buscar</button>
     </form>
 
     <hr />
@@ -49,12 +51,12 @@
     <div id="status-message"></div>
 
     <!-- 3. Contenedor donde se cargarán las tarjetas de personajes -->
-    <div id="results-container"></div>
+    <div id="results-container" class="results-grid"></div>
 
     <hr />
 
     <!-- 4. Controles de Paginación -->
-    <div id="pagination-container">
+    <div id="pagination-container" class="pagination">
       <button id="btn-prev" disabled>Anterior</button>
       <span id="page-info">Página 1</span>
       <button id="btn-next" disabled>Siguiente</button>
