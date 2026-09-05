@@ -31,14 +31,13 @@ const Card = {
 
     const btnCta = tarjeta.querySelector(".card__cta");
     btnCta.addEventListener("click", (e) => {
-      // Todavía sin lógica de carrito
+
+      //Se agrega el producto al carrito en localStorage
+      localStorageUtil.addProduct(item);
+
       e.preventDefault();
       btnCta.classList.add("card__cta--added");
       btnCta.textContent = "Agregado ✓";
-      setTimeout(() => {
-        btnCta.classList.remove("card__cta--added");
-        btnCta.textContent = "Agregar al carrito";
-      }, 1200);
     });
 
     return tarjeta;
@@ -48,14 +47,14 @@ const Card = {
   renderList(items, selectorContenedor, options = {}) {
     const contenedor = document.querySelector(selectorContenedor);
     if (!contenedor) return;
- 
+
     contenedor.innerHTML = "";
- 
+
     if (!items || items.length === 0) {
       contenedor.innerHTML = `<p class="empty-state">No se encontraron resultados.</p>`;
       return;
     }
- 
+
     items.forEach((item) => contenedor.appendChild(Card.createCard(item, options)));
   },
 };
