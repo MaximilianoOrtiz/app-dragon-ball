@@ -10,7 +10,7 @@ const Card = {
     tarjeta.dataset.id = item.id;
 
     const infoTag = linkable ? "a" : "div";
-    const hrefAttr = linkable ? `href="../../details.html?id=${item.id}"` : "";
+    const hrefAttr = linkable ? `href="./details.html?id=${item.id}"` : "";
 
     tarjeta.innerHTML = `
       <${infoTag} class="card__link" ${hrefAttr}>
