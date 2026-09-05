@@ -9,13 +9,10 @@ const CartHeader = {
 
         return `
             <header class="cart-header">
-
                 <div class="cart-header__info">
-
                     <h1 class="cart-header__title">
                         Mi carrito
                     </h1>
-
                     <span class="cart-header__count">
                         ${totalItems}
                         ${totalItems === 1
@@ -23,9 +20,7 @@ const CartHeader = {
                             : 'productos'
                         }
                     </span>
-
-                </div>
-
+                </div
                 <button
                     class="cart-header__clear"
                     type="button"
@@ -33,7 +28,6 @@ const CartHeader = {
                 >
                     Vaciar carrito
                 </button>
-
             </header>
         `;
     }

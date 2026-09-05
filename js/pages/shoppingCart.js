@@ -2,16 +2,13 @@ const ShoppingCart = {
 
     appShoppingCart: null,
 
-
     init() {
-
         this.appShoppingCart =
             document.querySelector('#site-shopping-cart');
 
         if (!this.appShoppingCart) return;
 
         this.render();
-
         this.bindEvents();
 
         document.addEventListener(
@@ -20,9 +17,7 @@ const ShoppingCart = {
         );
     },
 
-
     render() {
-
         const cart =
             localStorageUtil.getCart();
 
@@ -30,20 +25,16 @@ const ShoppingCart = {
             Cart.render(cart);
     },
 
-
     bindEvents() {
-
         this.appShoppingCart.addEventListener(
             'click',
             event => {
-
                 const button =
                     event.target.closest(
                         '[data-cart-action]'
                     );
 
                 if (!button) return;
-
                 const action =
                     button.dataset.cartAction;
 
@@ -51,7 +42,6 @@ const ShoppingCart = {
                     Number(
                         button.dataset.productId
                     );
-
 
                 switch (action) {
 
@@ -81,7 +71,6 @@ const ShoppingCart = {
         );
     },
 
-
     increaseQuantity(productId) {
 
         const cart =
@@ -100,7 +89,6 @@ const ShoppingCart = {
         );
     },
 
-
     decreaseQuantity(productId) {
 
         const cart =
@@ -118,7 +106,6 @@ const ShoppingCart = {
             product.quantity - 1
         );
     }
-
 };
 
 ShoppingCart.init();

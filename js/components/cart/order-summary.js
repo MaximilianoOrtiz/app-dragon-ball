@@ -14,13 +14,10 @@ const OrderSummary = {
 
         return `
             <aside class="order-summary">
-
                 <h2 class="order-summary__title">
                     Resumen del pedido
                 </h2>
-
                 <div class="order-summary__products">
-
                     ${cart.map(item => {
                         const price = parseFloat(item.price) || 0;
                         const quantity = parseInt(item.quantity, 10) || 0;
@@ -28,7 +25,6 @@ const OrderSummary = {
 
                         return `
                             <div class="summary-row">
-
                                 <span>
                                     ${item.name}
                                     ×
@@ -38,7 +34,6 @@ const OrderSummary = {
                                 <strong>
                                     $${itemTotal.toFixed(2)}
                                 </strong>
-
                             </div>
                         `;
                     }).join('')}
@@ -46,9 +41,7 @@ const OrderSummary = {
                 </div>
 
                 <div class="order-summary__totals">
-
                     <div class="summary-row">
-
                         <span>
                             Subtotal
                         </span>
@@ -56,42 +49,32 @@ const OrderSummary = {
                         <strong>
                             $${subtotal.toFixed(2)}
                         </strong>
-
                     </div>
 
                     <div class="summary-row">
-
                         <span>
                             Envío
                         </span>
-
                         <strong>
                             Gratis
                         </strong>
-
                     </div>
-
                 </div>
 
                 <div class="order-summary__total">
-
                     <span>
                         Total
                     </span>
-
                     <strong>
                         $${total.toFixed(2)}
                     </strong>
-
                 </div>
-
                 <button
                     class="order-summary__checkout"
                     type="button"
                 >
                     Confirmar pedido →
                 </button>
-
             </aside>
         `;
     }
