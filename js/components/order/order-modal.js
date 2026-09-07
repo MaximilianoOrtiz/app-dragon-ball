@@ -59,28 +59,52 @@ const OrderModal = {
                             <span class="order-form__error" data-error="address"></span>
                         </div>
 
-                        <div class="order-form__field">
-                            <label class="order-form__label" for="order-phone">
+                       <div class="order-form__field">
+                            <label
+                                class="order-form__label"
+                                for="order-phone"
+                            >
                                 Celular
                             </label>
 
-                            <input class="order-form__input" id="order-phone" name="phone" type="text"
-                                placeholder="Numero de celular" autocomplete="street-address">
+                            <input
+                                class="order-form__input"
+                                id="order-phone"
+                                name="phone"
+                                type="tel"
+                                placeholder="Número de celular"
+                                autocomplete="tel"
+                                inputmode="numeric"
+                            >
 
-                            <span class="order-form__error" data-error="address"></span>
+                            <span
+                                class="order-form__error"
+                                data-error="phone"
+                            ></span>
                         </div>
 
                         <div class="order-form__field">
-                            <label class="order-form__label" for="order-phone">
-                                Aclacraciones
+                            <label
+                                class="order-form__label"
+                                for="order-remarks"
+                            >
+                                Aclaraciones
                             </label>
 
-                            <input class="order-form__input" id="order-remarks" name="remarks" type="textarea"
-                                placeholder="Datos adicionales" autocomplete="street-address">
+                            <textarea
+                                class="order-form__input"
+                                id="order-remarks"
+                                name="remarks"
+                                placeholder="Datos adicionales"
+                                maxlength="250"
+                                rows="4"
+                            ></textarea>
 
-                            <span class="order-form__error" data-error="address"></span>
+                            <span
+                                class="order-form__error"
+                                data-error="remarks"
+                            ></span>
                         </div>
-
 
                         <div class="order-form__actions">
                             <button class="order-form__cancel" type="button" data-modal-close>
@@ -170,9 +194,94 @@ const OrderModal = {
     },
 
     handleSubmit(event) {
-
+        console.log("Formulario ");
         event.preventDefault();
-        // La validación la agregamos en la PARTE 2
-    }
 
+        const form =event.currentTarget;
+
+        this.clearErrors();
+
+        const errors =
+            FormValidator.validate(
+                form,
+                OrderFormRules
+            );
+
+        this.showErrors(errors);
+
+        if (!FormValidator.isValid(errors)) {
+            return;
+        }
+
+        this.confirmOrder(form);
+    },
+
+    showErrors(errors) {
+
+        Object.entries(errors).forEach(
+            ([fieldName, message]) => {
+
+                const error =
+                    document.querySelector(
+                        `[data-error="${fieldName}"]`
+                    );
+
+                const field =
+                    document.querySelector(
+                        `[name="${fieldName}"]`
+                    );
+                if (error) {
+                    error.textContent = message;
+                }
+
+                if (field) {
+                    field.classList.add(
+                        "order-form__input--error"
+                    );
+                    field.setAttribute(
+                        "aria-invalid",
+                        "true"
+                    );
+                }
+            }
+        );
+    },
+
+    clearErrors() {
+
+        document
+            .querySelectorAll(
+                ".order-form__error"
+            )
+            .forEach((element) => {
+                element.textContent = "";
+            });
+
+        document
+            .querySelectorAll(
+                ".order-form__input"
+            )
+            .forEach((field) => {
+
+                field.classList.remove(
+                    "order-form__input--error"
+                );
+                field.removeAttribute(
+                    "aria-invalid"
+                );
+            });
+    },
+
+    confirmOrder(form) {
+
+    const data =
+        Object.fromEntries(
+            new FormData(form)
+        );
+
+    console.log("Datos del pedido:", data);
+    localStorageUtil.clearCart();
+    this.close();
+
+}
 };

@@ -852,9 +852,6 @@ main {
   background-color: var(--color-orange-light);
 }
 
-
-
-
 /* =========================================
    ORDER MODAL
    ========================================= */
@@ -862,23 +859,17 @@ main {
 .order-modal {
   position: fixed;
   inset: 0;
-
   z-index: 1000;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 1rem;
-
   visibility: hidden;
   opacity: 0;
-
   transition:
     opacity 0.2s ease,
     visibility 0.2s ease;
 }
-
 
 /* Modal abierto */
 
@@ -889,44 +880,36 @@ main {
 
 
 /* =========================================
-   OVERLAY
+    ORDER MODAL - OVERLAY
    ========================================= */
 
 .order-modal__overlay {
   position: absolute;
   inset: 0;
-
   background-color: rgba(0, 0, 0, 0.45);
 }
 
-
 /* =========================================
-   CONTENT
+    ORDER MODAL -CONTENT
    ========================================= */
 
 .order-modal__content {
   position: relative;
   z-index: 1;
-
   width: 100%;
   max-width: 480px;
-
   padding: 1.5rem;
-
-  background-color: #ffffff;
-
-  border: 1px solid #e1e6ed;
+  margin-bottom: 4rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 1rem;
-
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.15);
 
   transform: translateY(10px);
-
   transition:
     transform 0.2s ease;
 }
-
 
 .order-modal--open .order-modal__content {
   transform: translateY(0);
@@ -934,46 +917,35 @@ main {
 
 
 /* =========================================
-   CLOSE
+    ORDER MODALCLOSE
    ========================================= */
 
 .order-modal__close {
   position: absolute;
-
   top: 0.75rem;
   right: 0.75rem;
-
   width: 2rem;
   height: 2rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0;
-
   border: 0;
   border-radius: 50%;
-
   background: transparent;
-
-  color: #6f7f95;
-
+  color: var(--color-muted);
   font-family: inherit;
   font-size: 1.5rem;
   line-height: 1;
-
   cursor: pointer;
 }
 
-
 .order-modal__close:hover {
-  background-color: #f1f3f6;
+  background-color: var(--color-surface-light);
 }
 
-
 /* =========================================
-   HEADER
+    ORDER MODALHEADER
    ========================================= */
 
 .order-modal__header {
@@ -981,29 +953,22 @@ main {
   padding-right: 2rem;
 }
 
-
 .order-modal__title {
   margin: 0 0 0.4rem;
-
-  color: #10233f;
-
+  color: var(--color-dark);
   font-size: 1.4rem;
   font-weight: 700;
 }
 
-
 .order-modal__description {
   margin: 0;
-
-  color: #7d91ac;
-
+  color: var(--color-muted);
   font-size: 0.9rem;
   line-height: 1.4;
 }
 
-
 /* =========================================
-   FORM
+    ORDER MODAL FORM
    ========================================= */
 
 .order-form {
@@ -1012,107 +977,102 @@ main {
   gap: 1rem;
 }
 
-
 .order-form__field {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-
 .order-form__label {
-  color: #10233f;
-
+  color: var(--color-dark);
   font-size: 0.85rem;
   font-weight: 600;
 }
 
-
 .order-form__input {
   width: 100%;
   min-height: 44px;
-
   padding: 0.7rem 0.8rem;
-
-  border: 1px solid #dce3ec;
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
-
-  background-color: #ffffff;
-
-  color: #10233f;
-
+  background-color: var(--color-surface);
+  color: var(--color-dark);
   font-family: inherit;
   font-size: 0.9rem;
-
   outline: none;
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-
 .order-form__input::placeholder {
   color: #a4b1c1;
 }
 
-
 .order-form__input:focus {
-  border-color: #f45b0b;
+  border-color: var(--color-orange);
 
   box-shadow:
     0 0 0 3px rgba(244, 91, 11, 0.12);
 }
 
-
 /* =========================================
-   ACTIONS
+    ORDER MODAL - ACTIONS
    ========================================= */
 
 .order-form__actions {
   display: flex;
   flex-direction: column;
-
   gap: 0.75rem;
-
   margin-top: 0.5rem;
 }
-
 
 .order-form__cancel,
 .order-form__submit {
   min-height: 46px;
-
   border-radius: 999px;
-
   font-family: inherit;
   font-size: 0.9rem;
   font-weight: 700;
-
   cursor: pointer;
 }
 
-
 .order-form__cancel {
   order: 2;
-
-  border: 1px solid #dce3ec;
-
-  background-color: #ffffff;
-
-  color: #71839a;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-muted);
 }
-
 
 .order-form__submit {
   order: 1;
-
   border: none;
-
-  background-color: #f45b0b;
-
+  background-color: var(--color-orange);
   color: #ffffff;
 }
+
+.order-form__submit:hover {
+  background-color: var(--color-orange-light);
+}
+
+.order-form__input--error {
+    border-color: var(--color-error);
+}
+
+
+.order-form__input--error:focus {
+    border-color: var(--color-error);
+    box-shadow:
+        0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+.order-form__error {
+    min-height: 1rem;
+    color: var(--color-error);
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
 
 /* ==================================================
    8. RESPONSIVE
