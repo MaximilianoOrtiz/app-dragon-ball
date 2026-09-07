@@ -72,11 +72,31 @@ const OrderSummary = {
                 <button
                     class="order-summary__checkout"
                     type="button"
+                    data-order-action="checkout"
                 >
-                    Confirmar pedido →
+                    Continuar pedido →
                 </button>
             </aside>
         `;
-    }
+    },
 
+    bindEvents(container) {
+
+        const button =
+            container.querySelector(
+                '[data-order-action="checkout"]'
+            );
+
+        if (!button) return;
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                document.dispatchEvent(
+                    new CustomEvent("order:checkout")
+                );
+            }
+        );
+    }
 };

@@ -8,6 +8,7 @@ const ShoppingCart = {
 
         if (!this.appShoppingCart) return;
 
+        OrderModal.render("#site-modal");
         this.render();
         this.bindEvents();
 
@@ -23,6 +24,8 @@ const ShoppingCart = {
 
         this.appShoppingCart.innerHTML =
             Cart.render(cart);
+            
+        OrderSummary.bindEvents(this.appShoppingCart);
     },
 
     bindEvents() {
