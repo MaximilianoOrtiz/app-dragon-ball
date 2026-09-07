@@ -194,7 +194,6 @@ const OrderModal = {
     },
 
     handleSubmit(event) {
-        console.log("Formulario ");
         event.preventDefault();
 
         const form =event.currentTarget;
@@ -274,14 +273,11 @@ const OrderModal = {
 
     confirmOrder(form) {
 
-    const data =
-        Object.fromEntries(
-            new FormData(form)
-        );
-
-    console.log("Datos del pedido:", data);
     localStorageUtil.clearCart();
     this.close();
 
+    Toast.show(
+        "¡Pedido confirmado! Gracias por tu compra."
+    );
 }
 };
