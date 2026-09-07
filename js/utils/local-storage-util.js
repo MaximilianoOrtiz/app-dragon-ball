@@ -21,6 +21,7 @@ const localStorageUtil = {
             cart.push({
                 id: product.id,
                 name: product.name,
+                race: product.race,
                 image: product.image,
                 category: product.category,
                 price: product.price,

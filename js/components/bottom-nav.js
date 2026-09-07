@@ -1,13 +1,13 @@
-const BottomNav  = {
-  render: (selector) => {
-    const element = document.querySelector(selector);
-    if (!element) return;
+const BottomNav = {
+    render: (selector) => {
+        const element = document.querySelector(selector);
+        if (!element) return;
 
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
-    const isActive = (page) => currentPage === page ? "bottom-nav__item--active" : "";
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+        const isActive = (page) => currentPage === page ? "bottom-nav__item--active" : "";
 
-    {
-      element.innerHTML = `
+        {
+            element.innerHTML = `
         <nav class="bottom-nav">
           <a href="./index.html" class="bottom-nav__item ${isActive("index.html")}">
               <span class="bottom-nav__icon">
@@ -44,10 +44,13 @@ const BottomNav  = {
                     <circle cx="18" cy="20" r="1.5"></circle>
                 </svg>
             </span>
+            <span class="bottom-nav__badge" data-cart-count hidden>
+                0
+            </span>
+            
             <span class="bottom-nav__text">Carrito</span>
             </a>
-          
-
+           
           <a href="#" class="bottom-nav__item">
               <span class="bottom-nav__icon">
                   <!-- Historial -->
@@ -73,6 +76,29 @@ const BottomNav  = {
           </a>
         </nav>
       `;
+            // Mostrar cantidad inicial
+            BottomNav.updateCartCount();
+
+            // Escuchar cambios en el carrito
+            document.addEventListener(
+                "cart:updated",
+                BottomNav.updateCartCount
+            );
         }
+    },
+
+    updateCartCount: () => {
+        const badge =
+            document.querySelector(
+                "[data-cart-count]"
+            );
+
+        if (!badge) return;
+
+        const totalItems =
+            localStorageUtil.getTotalItems();
+        badge.textContent = totalItems;
+        // Ocultar si el carrito está vacío
+        badge.hidden = totalItems === 0;
     }
 };

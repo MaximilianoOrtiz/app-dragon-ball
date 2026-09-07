@@ -22,7 +22,7 @@ const CartItem = {
                         ${product.name}
                     </h2>
                     <span class="cart-item__category">
-                        ${product.category}
+                        ${product.race}
                     </span>
                     <strong class="cart-item__price">
                         $${price.toFixed(2)}

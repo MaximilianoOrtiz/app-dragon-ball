@@ -2,10 +2,7 @@ const CartHeader = {
 
     render(cart) {
 
-        const totalItems = cart.reduce(
-            (total, item) => total + item.quantity,
-            0
-        );
+        const totalItems = localStorageUtil.getTotalItems();
 
         return `
             <header class="cart-header">
@@ -20,7 +17,7 @@ const CartHeader = {
                             : 'productos'
                         }
                     </span>
-                </div
+                </div>
                 <button
                     class="cart-header__clear"
                     type="button"
