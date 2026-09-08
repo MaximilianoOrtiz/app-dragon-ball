@@ -799,6 +799,64 @@ main{
     white-space: nowrap;
 }
 
+/* Historial de vistos recientemente */
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(12, 27, 51, 0.06);
+}
+
+.history-item__media {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    overflow: hidden;
+    background-color: var(--color-subtle);
+}
+
+.history-item__media img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.history-item__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.history-item__name {
+    color: var(--color-navy);
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-item__race {
+    color: var(--color-muted);
+    font-size: 13px;
+}
+
+.history-item__link {
+    flex-shrink: 0;
+    color: var(--color-orange);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+}
 
  /* ==========================================
    BLOCK: CART
@@ -1340,4 +1398,3 @@ main{
     gap: 16px;
   }
 }
-

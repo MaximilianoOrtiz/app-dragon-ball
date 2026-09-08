@@ -48,7 +48,7 @@ const BottomNav  = {
             </a>
           
 
-          <a href="#" class="bottom-nav__item">
+          <a href="./history.html" class="bottom-nav__item ${isActive("history.html")}">
               <span class="bottom-nav__icon">
                   <!-- Historial -->
                   <svg viewBox="0 0 24 24" aria-hidden="true">

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       statusDiv.innerText = "El producto solicitado no existe.";
       return;
     }
-
+    recentlyViewedUtil.addView(character);
     // 3. Renderiza la información
     renderDetail(character, detailContainer);
 
