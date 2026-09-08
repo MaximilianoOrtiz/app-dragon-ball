@@ -694,15 +694,16 @@ main{
 }
 
 .transformation-card__media {
+  position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 4;
     background-color: var(--color-subtle);
+    overflow: hidden;
 }
 
 .transformation-card__media img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .transformation-card__body {
