@@ -38,12 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
 async function executeSearch() {
   const statusDiv = document.getElementById("status-message");
   const resultsDiv = document.getElementById("results-container");
+  const paginationContainer = document.getElementById("pagination-container");
 
   // Captura los valores elegidos en el formulario
   const filters = {
     name: document.getElementById("input-name").value.trim(),
     race: document.getElementById("select-race").value,
     gender: document.getElementById("select-gender").value,
+    affiliation: document.getElementById("select-affiliation").value,
     page: currentPage,
   };
 
@@ -58,37 +60,29 @@ async function executeSearch() {
 
     if (!response.items || response.items.length === 0) {
       Card.renderList([], "#results-container");
-      updatePaginationControls(false, false);
+      paginationContainer.style.display = "none";
       return;
     }
 
     // Dibujar personajes en el HTML usando el componente Card
     Card.renderList(response.items, "#results-container");
 
-    // Actualizar estado de los botones Anterior / Siguiente
-    updatePaginationControls(currentPage > 1, response.hasNext);
+    // Actualizar estado de los botones Anterior/Siguiente y Ocultar Si no hay mas Paginas
+    const totalPages = response.totalPages;
+    const singlePage = totalPages ? totalPages <=1 : !response.hasNext && currentPage ===1;
+
+    if(singlePage) {
+      paginationContainer.style.display = "none"
+    } else {
+      paginationContainer.style.display = "flex";
+      updatePaginationControls(currentPage > 1, response.hasNext);
+    }
 
   } catch (error) {
     console.error(error);
     statusDiv.innerText = "Error con la API.";
   }
 }
-
-/*function renderCharacters(characters) {
-  const resultsDiv = document.getElementById("results-container");
-
-  // Genera un bloque HTML básico para cada personaje
-  const html = characters.map((c) => `
-    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
-      <img src="${c.image}" alt="${c.name}" width="80" />
-      <h3>${c.name}</h3>
-      <p>Raza: ${c.race} | Género: ${c.gender}</p>
-      <p>Precio simulado: $${c.price}</p>
-    </div>
-  `).join("");
-
-  resultsDiv.innerHTML = html;
-} */
 
 function updatePaginationControls(hasPrev, hasNext) {
   const btnPrev = document.getElementById("btn-prev");

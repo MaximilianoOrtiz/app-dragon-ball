@@ -19,26 +19,61 @@
 
  
   <main> 
-       <h1>Buscador de Personajes</h1>
+       <h1>Buscador de Figuras</h1>
 
     <!-- 1. Formulario de Búsqueda y Filtros -->
-    <form id="search-form">
-      <input type="text" id="input-name" placeholder="Nombre (ej. Goku)" />
+    <form id="search-form"  class="search-card">
 
+      <div class="form-group">
+      <label for="input-name">Nombre</label>
+      <input type="text" id="input-name" placeholder="Nombre (ej. Goku)" />
+</div>
+
+      <div class="form-group">
       <div class="search-form__row"></div>
+      <label for="select-race">Raza</label>
       <select id="select-race">
         <option value="">Todas las razas</option>
         <option value="Saiyan">Saiyan</option>
         <option value="Human">Humano</option>
         <option value="Namekian">Namekiano</option>
+        <option value="Majin">Majin</option>
         <option value="Android">Androide</option>
         <option value="Frieza Race">Raza de Freezer</option>
+        <option value="Jiren Race">Raza de Jiren</option>
+        <option value="God">Dios</option>
+        <option value="Angel">Ángel</option>
+        <option value="Evil">Maligno</option>
+        <option value="Nucleico">Nucleico</option>
+        <option value="Nucleioco benigno">Nucleico Benigno</option>
+        <option value="Unknown">Unknown</option>
       </select>
+      </div>
 
-      <select id="select-gender">
-        <option value="">Todos los géneros</option>
-        <option value="Male">Masculino</option>
-        <option value="Female">Femenino</option>
+      <div class="form-group">
+        <label for="select-gender">Género</label>
+        <select id="select-gender">        
+          <option value="">Todos los géneros</option>
+          <option value="Male">Masculino</option>
+          <option value="Female">Femenino</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="select-affiliation">Afiliación</label>
+      <select id="select-affiliation">        
+        <option value="">Todas las afiliaciones</option>
+        <option value="Z Fighter">Guerrero Z</option>
+        <option value="Red Ribbon Army">Ejército de la Cinta Roja</option>
+        <option value="Namekian Warrior">Guerrero Namekiano</option>
+        <option value="Freelancer">Independiente</option>
+        <option value="Army of Frieza">Ejército de Freezer</option>
+        <option value="Pride Troopers">Guerreros del Orgullo</option>
+        <option value="Assistant of Vermoud">Asistente de Vermoud</option>
+        <option value="God">Dios</option>
+        <option value="Assistant of Beerus">Asistente de Beerus</option>
+        <option value="Villain">Villano</option>
+        <option value="Other">Otra</option>
       </select>
       </div>
 
