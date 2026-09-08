@@ -29,23 +29,12 @@ const OrderModal = {
                     <form class="order-form" id="order-form">
                         <div class="order-form__field">
                             <label class="order-form__label" for="order-name">
-                                Nombre
+                                Nombre Completo
                             </label>
 
-                            <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Ingresá tu nombre"
+                            <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Ingresá tu nombre y apellido"
                                 autocomplete="given-name">
                             <span class="order-form__error" data-error="name"></span>
-                        </div>
-
-                        <div class="order-form__field">
-                            <label class="order-form__label" for="order-lastname">
-                                Apellido
-                            </label>
-
-                            <input class="order-form__input" id="order-lastname" name="lastname" type="text"
-                                placeholder="Ingresá tu apellido" autocomplete="family-name">
-
-                            <span class="order-form__error" data-error="lastname"></span>
                         </div>
 
                         <div class="order-form__field">
@@ -87,15 +76,15 @@ const OrderModal = {
                             <label
                                 class="order-form__label"
                                 for="order-remarks"
-                            >
-                                Aclaraciones
+                            >   
+                                Comentarios
                             </label>
 
                             <textarea
                                 class="order-form__input"
                                 id="order-remarks"
                                 name="remarks"
-                                placeholder="Datos adicionales"
+                                placeholder="Datos adicionales (opcional)"
                                 maxlength="250"
                                 rows="4"
                             ></textarea>

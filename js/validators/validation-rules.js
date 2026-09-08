@@ -25,5 +25,10 @@ const ValidationRules = {
         return /^\d{8,15}$/.test(
             value.trim()
         );
+    },
+
+    fullName(value) {
+        return /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+(\s+[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+)+$/
+            .test(value.trim());
     }
 };

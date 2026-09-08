@@ -18,28 +18,13 @@ const OrderFormRules = {
             validate: (value) =>
                 ValidationRules.maxLength(value, 50),
             message: "El nombre no puede superar los 50 caracteres."
+        },
+        {
+            validate: (value) =>
+                ValidationRules.fullName(value),
+            message: "Ingresá nombre y apellido correctamente."
         }
-    ],
 
-    lastname: [
-        {
-            validate: ValidationRules.required,
-            message: "El apellido es obligatorio."
-        },
-        {
-            validate: ValidationRules.onlyLetters,
-            message: "El apellido solo puede contener letras."
-        },
-        {
-            validate: (value) =>
-                ValidationRules.minLength(value, 2),
-            message: "El apellido debe tener al menos 2 caracteres."
-        },
-        {
-            validate: (value) =>
-                ValidationRules.maxLength(value, 50),
-            message: "El apellido no puede superar los 50 caracteres."
-        }
     ],
 
     address: [
