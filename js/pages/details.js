@@ -49,6 +49,7 @@ function buildTransformationId(characterId, transformationID) {
 }
 
 function renderDetail(item, container) {
+  const price = parseFloat(item.price) || 0;
   container.innerHTML = `
     <div class="detail-card">
       <div class="detail-card__media">
@@ -61,7 +62,7 @@ function renderDetail(item, container) {
           <span class="card__tag card__tag--gender">${item.gender}</span>
         </p>
         <p class="detail-card__affiliation"><strong>Afiliación:</strong> ${item.affiliation}</p>
-        <p class="detail-card__price">$${item.price}</p>
+        <p class="detail-card__price">$${price.toFixed(2)}</p>
         <button class="detail-card__cta" type="button" id="btn-add-base">
           Agregar al carrito
         </button>
@@ -78,6 +79,7 @@ btnAddBase.addEventListener("click", () => {
   localStorageUtil.addProduct({
     id:item.id,
     name:item.name,
+    race: item.race,
     image:item.image,
     category:"Figura base",
     price:item.price,
@@ -113,6 +115,7 @@ function renderTransformations(character, list, container) {
       localStorageUtil.addProduct({
         id: buildTransformationId(character.id, trans.id),
         name: `${character.name} - ${trans.name}`,
+        race: character.race,
         image: trans.image,
         category: "Edición especial",
         price: trans.price,

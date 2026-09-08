@@ -9,6 +9,8 @@ const Card = {
     tarjeta.classList.add("card");
     tarjeta.dataset.id = item.id;
 
+    const price = parseFloat(item.price) || 0;
+
     const infoTag = linkable ? "a" : "div";
     const hrefAttr = linkable ? `href="./details.html?id=${item.id}"` : "";
 
@@ -24,7 +26,7 @@ const Card = {
             <span class="card__tag card__tag--gender">${item.gender}</span>
           </p>
           <h3 class="card__title">${item.name}</h3>
-          <p class="card__price">$${item.price}</p>
+          <p class="card__price">$${price.toFixed(2)}</p>  
         </div>
       </${infoTag}>
       <div class="card__actions">
