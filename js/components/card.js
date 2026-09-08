@@ -16,6 +16,7 @@ const Card = {
       <${infoTag} class="card__link" ${hrefAttr}>
         <div class="card__media">
           <img src="${item.image}" alt="${item.name}" loading="lazy">
+          <span class="card__affiliation">${item.affiliation}</span>
         </div>
         <div class="card__body">
           <p class="card__tags">
@@ -26,7 +27,10 @@ const Card = {
           <p class="card__price">$${item.price}</p>
         </div>
       </${infoTag}>
-      <button class="card__cta" type="button">Agregar al carrito</button>
+      <div class="card__actions">
+        <button class="card__cta" type="button">Agregar al carrito</button>
+        ${linkable ? `<a href="./details.html?id=${item.id}" class="card__cta card__cta--outline">Ver producto</a>` : "" }
+      </div>
     `;
 
     const btnCta = tarjeta.querySelector(".card__cta");
