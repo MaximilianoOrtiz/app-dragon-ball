@@ -19,6 +19,8 @@ const recentlyViewedUtil = {
             name: character.name,
             race: character.race,
             image: character.image,
+            price: character.price,
+            quantity: character.quantity
         });
 
         // Recorta a los últimos MAX_ITEMS
@@ -26,4 +28,5 @@ const recentlyViewedUtil = {
 
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(views));
     },
+
 };

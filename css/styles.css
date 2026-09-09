@@ -54,8 +54,14 @@ a {
 }
 
 main {
+  width: 100%;
+  min-height: 100vh;
   padding-top: 75px;
   padding-bottom: 75px;
+  box-sizing: border-box;
+}
+
+.main__container{
   min-height: 100vh;
   width: 100%;
   max-width: 1280px;
@@ -443,7 +449,7 @@ main {
 
 .empty-state {
   grid-column: 1 / -1;
-  color: var(--color-muted);
+  color: var(--color-dark);
   font-size: 14px;
   text-align: center;
   padding: 32px 0;
@@ -1593,65 +1599,239 @@ main {
     font-size: 0.75rem;
     line-height: 1.3;
 }
+/* ==================================================
+   HERO 
+   ================================================== */
 
-/* =========================================
-   TOAST
-   ========================================= */
-
-.toast-container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 1.5rem;
-  display: flex;
-  justify-content: center;
-  padding: 0 1rem;
-  z-index: 1100;
-  pointer-events: none;
+.hero {
+    position: relative;
+    isolation: isolate;
+    padding: 1rem 0.875rem 2rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--color-navy);
+    color: #ffffff;
 }
 
-.toast {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  max-width: 100%;
-  padding: 0.9rem 1.25rem;
-  border-radius: 0.75rem;
-  background-color: var(--color-navy);
-  color: var(--color-surface);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  pointer-events: auto;
+.hero__content {
+    position: relative;
+    z-index: 2;
 
-  animation: toast-in 0.25s ease forwards;
+    width: 100%;
+    max-width: 420px;
+
+    margin: 0 auto;
 }
 
-.toast--success {
-  background-color: var(--color-success);
+.hero__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.toast--error {
-  background-color: var(--color-error);
+.hero__brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.9rem;
 }
 
-@keyframes toast-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero__brand-name {
+    color: #ff6500;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
-@media (min-width: 768px) {
-  .toast-container {
-    bottom: 3rem;
-  }
+
+.hero__title {
+    margin: 0;
+    font-size: clamp(2rem, 9vw, 2.7rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.hero__title-highlight {
+    display: block;
+    margin-top: 0.25rem;
+    color: #ff6500;
+}
+
+.hero__description {
+    max-width: 380px;
+    margin: 1.25rem 0 1.5rem;
+    color: #d9e2ef;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.hero__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.625rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.hero__button--primary {
+    background-color: #ff5b08;
+    color: #ffffff;
+}
+
+.hero__button--primary:hover {
+    background-color: #e94f00;
+}
+
+.hero__button--primary:active {
+    transform: scale(0.98);
+}
+
+.hero__button--secondary {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.10);
+    color: #ffffff;
+}
+
+.hero__button--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.hero__decoration {
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero__decoration--top {
+    width: 18rem;
+    height: 18rem;
+    top: 2rem;
+    right: -5rem;
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 100, 0, 0.08) 45%,
+            rgba(255, 255, 255, 0.02) 70%
+        );
+    opacity: 0.8;
+}
+
+.hero__decoration--bottom {
+    width: 14rem;
+    height: 14rem;
+    bottom: -5rem;
+    right: 3rem;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.01) 70%
+        );
+}
+
+
+/* ==================================================
+   BENEFITS
+   ================================================== */
+
+.benefits {
+    width: 100%;
+    margin-top: 3rem;
+    padding: 1.25rem 1rem;
+    border: 1px solid var(--color-border, #dce3eb);
+    border-radius: 0.875rem;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.benefits__header {
+    margin-bottom: 1.5rem;
+}
+
+.benefits__title {
+    margin: 0 0 0.25rem;
+    color: var(--color-text, #101828);
+    font-size: 1rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.benefits__subtitle {
+    margin: 0;
+    color: var(--color-text-secondary, #8291a8);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.benefits__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.benefits__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+
+    min-width: 0;
+}
+
+.benefits__icon {
+    flex: 0 0 2rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    background-color: #fff0e8;
+    color: var(--color-primary, #ff5b08);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.benefits__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.benefits__name {
+    margin: 0 0 0.25rem;
+    color: var(--color-text, #101828);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.benefits__description {
+    margin: 0;
+    color: var(--color-text-secondary, #8291a8);
+    font-size: 0.7rem;
+    line-height: 1.55;
 }
 
 
@@ -1832,7 +2012,6 @@ main {
   Grid de resultados RESPONSIVE
    ========================================== */
 
-
 @media (min-width: 768px){
 
   .results-grid{
@@ -1867,3 +2046,28 @@ main {
   }
 
 }
+
+/* ==================================================
+   Beneficios Response 
+   ================================================== */
+
+@media (min-width: 768px) {
+
+    .benefits {
+        padding: 1.5rem;
+    }
+
+    .benefits__list {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        column-gap: 2rem;
+        row-gap: 1.75rem;
+    }
+
+    .benefits__item {
+        flex: 1 1 calc(50% - 1rem);
+    }
+
+}
+
