@@ -52,13 +52,13 @@ const Hero = {
                     <div class="hero__actions">
 
                         <a
-                            href="/search.html"
+                            href="./search.html"
                             class="hero__button hero__button--primary">
                             Ver catálogo
                         </a>
 
                         <a
-                            href="/shoppingCart.html"
+                            href="./shoppingCart.html"
                             class="hero__button hero__button--secondary">
                             Mi carrito
                         </a>
