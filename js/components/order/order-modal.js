@@ -265,8 +265,15 @@ const OrderModal = {
     localStorageUtil.clearCart();
     this.close();
 
-    Toast.show(
-        "¡Pedido confirmado! Gracias por tu compra."
-    );
+    const rootStyles = getComputedStyle(document.documentElement);
+    const swalConfirmButtonColor = rootStyles.getPropertyValue('--color-orange').trim();
+    
+    Swal.fire({
+      icon: 'success',
+      title: `Gracias por su compra, su pedido ha sido confirmado.`,
+      showConfirmButton: true,
+      confirmButtonText: 'Continuar',
+      confirmButtonColor: swalConfirmButtonColor,
+    });
 }
 };
