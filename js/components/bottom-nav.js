@@ -65,7 +65,7 @@ const BottomNav = {
               <span class="bottom-nav__text">Historial</span>
           </a>
 
-          <a href="#" class="bottom-nav__item">
+          <a href="./aboutMe.html" class="bottom-nav__item ${isActive("aboutMe.html")}">
               <span class="bottom-nav__icon">
                   <!-- Contacto -->
                   <svg viewBox="0 0 24 24" aria-hidden="true">
