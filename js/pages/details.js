@@ -99,7 +99,7 @@ function renderTransformations(character, list, container) {
       <div class="transformation-card__body">
         <span class="transformation-card__badge">Edición especial</span>
         <h4 class="transformation-card__name">${trans.name}</h4>
-        <p class="transformation-card__price">$${trans.price}</p>
+        <p class="transformation-card__price">$${(parseFloat(trans.price)).toFixed(2)}</p>
         <button class="transformation-card__cta" type="button">
           Agregar al carrito
         </button>
