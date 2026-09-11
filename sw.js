@@ -1,42 +1,98 @@
 const CACHE_NAME = 'app-shell-v1'; 
+
+// Detecta si estás en GitHub Pages (/app-dragon-ball/) o en Localhost Live Server (/)
+const isGitHub = self.location.pathname.startsWith('/app-dragon-ball');
+const BASE = isGitHub ? '/app-dragon-ball' : '';
+
 const RECURSOS_SHELL = [ 
-'/app-dragon-ball/', 
-'/app-dragon-ball/index.html',
-'/app-dragon-ball/search.html',
-'/app-dragon-ball/details.html',
-'/app-dragon-ball/shoppingCart.html',
-'/app-dragon-ball/history.html',
-'/app-dragon-ball/aboutMe',
-'/app-dragon-ball/assets/images/dragon-ball.png',
-'/app-dragon-ball/css/styles.css',
-'/app-dragon-ball/js/api/api.js',
-'/app-dragon-ball/js/api/apiLeaflet.js',
-'/app-dragon-ball/js/components/cart/cart-header.js',
-'/app-dragon-ball/js/components/cart/cart-item.js',
-'/app-dragon-ball/js/components/cart/cart.js',
-'/app-dragon-ball/js/components/cart/order-summary.js',
-'/app-dragon-ball/js/components/cart/quantity-selector.js',
-'/app-dragon-ball/js/components/home/benefits.js',
-'/app-dragon-ball/js/components/home/hero.js',
-'/app-dragon-ball/js/components/order/order-modal.js',
-'/app-dragon-ball/js/components/bottom-nav.js',
-'/app-dragon-ball/js/components/card.js',
-'/app-dragon-ball/js/components/footer.js',
-'/app-dragon-ball/js/components/header.js',
-'/app-dragon-ball/js/pages/aboutMe.js',
-'/app-dragon-ball/js/pages/details.js',
-'/app-dragon-ball/js/pages/history.js',
-'/app-dragon-ball/js/pages/index.js',
-'/app-dragon-ball/js/pages/search.js',
-'/app-dragon-ball/js/pages/shoppingCart.js',
-'/app-dragon-ball/js/utils/local-storage-util.js',
-'/app-dragon-ball/js/utils/recently-viewed-util.js',
-'/app-dragon-ball/js/utils/router.js',
-'/app-dragon-ball/js/validators/form-validator.js',
-'/app-dragon-ball/js/validators/order-form-rules.js',
-'/app-dragon-ball/js/validators/validation-rules.js',
-'/app-dragon-ball/js/main.js',
-'/app-dragon-ball/js/pwa-init.js',
-'/app-dragon-ball/manifest.json',
-'/app-dragon-ball/README.md',
+  `${BASE}/`, 
+  `${BASE}/index.html`,
+  `${BASE}/search.html`,
+  `${BASE}/details.html`,
+  `${BASE}/shoppingCart.html`,
+  `${BASE}/history.html`,
+  `${BASE}/aboutMe.html`,
+  `${BASE}/assets/images/dragon-ball.png`,
+  `${BASE}/assets/images/icon-192.png`,
+  `${BASE}/assets/images/icon-512.png`,
+  `${BASE}/css/styles.css`,
+  `${BASE}/js/api/api.js`,
+  `${BASE}/js/api/apiLeaflet.js`,
+  `${BASE}/js/components/cart/cart-header.js`,
+  `${BASE}/js/components/cart/cart-item.js`,
+  `${BASE}/js/components/cart/cart.js`,
+  `${BASE}/js/components/cart/order-summary.js`,
+  `${BASE}/js/components/cart/quantity-selector.js`,
+  `${BASE}/js/components/home/benefits.js`,
+  `${BASE}/js/components/home/hero.js`,
+  `${BASE}/js/components/order/order-modal.js`,
+  `${BASE}/js/components/bottom-nav.js`,
+  `${BASE}/js/components/card.js`,
+  `${BASE}/js/components/footer.js`,
+  `${BASE}/js/components/header.js`,
+  `${BASE}/js/pages/aboutMe.js`,
+  `${BASE}/js/pages/details.js`,
+  `${BASE}/js/pages/history.js`,
+  `${BASE}/js/pages/index.js`,
+  `${BASE}/js/pages/search.js`,
+  `${BASE}/js/pages/shoppingCart.js`,
+  `${BASE}/js/utils/local-storage-util.js`,
+  `${BASE}/js/utils/recently-viewed-util.js`,
+  `${BASE}/js/utils/router.js`,
+  `${BASE}/js/validators/form-validator.js`,
+  `${BASE}/js/validators/order-form-rules.js`,
+  `${BASE}/js/validators/validation-rules.js`,
+  `${BASE}/js/main.js`,
+  `${BASE}/js/pwa-init.js`,
+  `${BASE}/manifest.json`
 ];
+
+// ==========================================
+// 1. EVENTO INSTALL: Guardar archivos en caché
+// ==========================================
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(async (cache) => {
+      console.log('[SW] Guardando recursos shell en caché...');
+      for (const resource of RECURSOS_SHELL) {
+        try {
+          await cache.add(resource);
+        } catch (error) {
+          console.warn(`[SW] No se pudo guardar en caché: ${resource}`, error);
+        }
+      }
+    }).then(() => self.skipWaiting())
+  );
+});
+
+// ==========================================
+// 2. EVENTO ACTIVATE: Limpiar versiones viejas
+// ==========================================
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            console.log('[SW] Eliminando caché antigua:', key);
+            return caches.delete(key);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
+});
+
+// ==========================================
+// 3. EVENTO FETCH: Interceptar y responder desde caché
+// ==========================================
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      // Si el archivo está en caché, lo devuelve. Si no, intenta buscarlo en la red.
+      return cachedResponse || fetch(event.request);
+    })
+  );
+});
