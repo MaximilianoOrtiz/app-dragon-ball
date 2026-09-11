@@ -5,11 +5,11 @@ const DragonBallAPI = (function () {
 
   function formatPrice(ki) {
   if (ki === "0") {
-    return "200";
+    return "20";
   }
 
   if (ki === "unknown") {
-    return "100.000";
+    return "10";
   }
   return ki; // Si no es 0 ni Unknow, mantiene el Ki original
 }
