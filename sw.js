@@ -15,6 +15,7 @@ const RECURSOS_SHELL = [
   `${BASE}/assets/images/dragon-ball.png`,
   `${BASE}/assets/images/icon-192.png`,
   `${BASE}/assets/images/icon-512.png`,
+  `${BASE}/assets/images/favicon.png`,
   `${BASE}/css/styles.css`,
   `${BASE}/js/api/api.js`,
   `${BASE}/js/api/apiLeaflet.js`,
