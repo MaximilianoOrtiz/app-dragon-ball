@@ -20,7 +20,9 @@ const recentlyViewedUtil = {
             race: character.race,
             image: character.image,
             price: character.price,
-            quantity: character.quantity
+            quantity: character.quantity,
+            affiliation: character.affiliation,
+            gender: character.gender
         });
 
         // Recorta a los últimos MAX_ITEMS
