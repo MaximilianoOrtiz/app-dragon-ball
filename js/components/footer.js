@@ -13,10 +13,10 @@ const Footer = {
                         <img
                             class="site-footer__logo"
                             src="./assets/images/dragon-ball.png"
-                            alt="Dragon Ball"
+                            alt="Capsule Store"
                         >
                         <span class="site-footer__name">
-                            Dragon Ball
+                            Capsule Store
                         </span>
                     </div>
                     <p class="site-footer__description">

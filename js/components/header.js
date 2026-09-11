@@ -6,7 +6,7 @@ const Header = {
 
         element.innerHTML = `
             <header class="site-header">
-                <a href="./index.html" class="site-header__brand" aria-label="Dragon Ball - Inicio">
+                <a href="./index.html" class="site-header__brand" aria-label="Capsule Store - Inicio">
 
                     <img
                         class="site-header__logo"
@@ -16,7 +16,7 @@ const Header = {
 
                     <div class="site-header__title">
                         <span class="site-header__name">
-                            DRAGON BALL
+                            Capsule Store
                         </span>
                     </div>
                 </a>

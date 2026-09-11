@@ -30,7 +30,7 @@ const Hero = {
                         </span>
 
                         <span class="hero__brand-name">
-                            Dragon Ball
+                            Capsule Store
                         </span>
 
                     </div>
@@ -39,7 +39,7 @@ const Hero = {
                         Figuras y coleccionables
 
                         <span class="hero__title-highlight">
-                            Dragon Ball
+                            Capsule Store
                         </span>
                     </h1>
 
