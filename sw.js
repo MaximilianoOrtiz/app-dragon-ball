@@ -12,6 +12,7 @@ const RECURSOS_SHELL = [
   `${BASE}/shoppingCart.html`,
   `${BASE}/history.html`,
   `${BASE}/aboutMe.html`,
+  `${BASE}/README.md`,
   `${BASE}/assets/images/dragon-ball.png`,
   `${BASE}/assets/images/icon-192.png`,
   `${BASE}/assets/images/icon-512.png`,
